@@ -1,6 +1,6 @@
 import random
 
-class Kinematografia:
+class Film:
     def __init__(self, tytul, rok_wydania, gatunek):
         self.tytul = tytul
         self.rok_wydania = rok_wydania
@@ -11,10 +11,7 @@ class Kinematografia:
     def __str__(self):
         return f"{self.tytul} ({self.rok_wydania})"
 
-class Film(Kinematografia):
-    pass
-
-class Serial(Kinematografia):
+class Serial(Film):
     def __init__(self, tytul, rok_wydania, gatunek, numer_odcinka, numer_sezonu):
         super().__init__(tytul, rok_wydania, gatunek)
         self.numer_odcinka = numer_odcinka

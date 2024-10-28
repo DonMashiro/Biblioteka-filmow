@@ -21,7 +21,7 @@ class Serial(Film):
 
 # Definicja funkcji
 def filter_by_type(items, type_class):
-    filtered_items = [item for item in items if isinstance(item, type_class)]
+    filtered_items = [item for item in items if type(item) is type_class]
     filtered_items.sort(key=lambda item: item.tytul)
     return filtered_items
 
@@ -59,12 +59,26 @@ def top_titles(items, n, content_type=None):
     items.sort(key=lambda item: item.liczba_odtworzen, reverse=True)
     return items[:n]
 
-# Główna część programu
+#Główna część programu
 if __name__ == "__main__":
     lista_tytulow = []
     film_1 = Film("Pulp Fiction", 1994, "Komedia")
-    lista_tytulow.append(film_1)
+    film_2 = Film("Lśnienie", 1980, "Horror")
+    film_3 = Film("Szeregowiec Ryan", 1998, "Dramat")
     serial_1 = Serial("The Simpsons", 1989, "Komedia", 5, 1)
-    lista_tytulow.append(serial_1)
-    for tytuł in lista_tytulow:
-        print(tytuł)
+    serial_2 = Serial("Dexter", 2006, "Kryminał", 3, 5)
+    serial_3 = Serial("Gra o tron", 2011, "Fantasy", 7, 7)
+    serial_4 = Serial("Gambit królowej", 2020, "Dramat", 1, 3)
+    lista_tytulow.extend([film_1, film_2, film_3, serial_1, serial_2, serial_3, serial_4])
+    
+     #Sprawdzenie działania fukcji get_movies
+    print("Filmy:")
+    filmy = get_movies(lista_tytulow)
+    for film in filmy:
+        print(film)
+
+    #Sprawdzenie działania fukcji get_series
+    print("\nSeriale:")
+    seriale = get_series(lista_tytulow)
+    for serial in seriale:
+        print(serial)
